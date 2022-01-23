@@ -1,6 +1,6 @@
 <template>
   <div class="news-search mt-9">
-    <v-card class="pa-md-4 mx-lg-auto" color="white" width="500px">
+    <v-card class="pa-md-4 mx-lg-auto" color="white" width="800px">
       <v-menu
         v-if="searchByDate"
         v-model="menu"
@@ -12,7 +12,7 @@
       >
         <template v-slot:activator="{ on }">
           <v-text-field
-            :value="currentDate"
+            v-model="currentDate"
             label="Pretrazi po datumu"
             readonly
             v-on="on"
@@ -20,17 +20,17 @@
         </template>
         <v-date-picker
           :disabled="isError || isLoading"
-          :value="currentDate"
-          @input="value => onChange(value, 'date')"
+          v-model="currentDate"
+          @input="(value) => onChange(value, 'date')"
         ></v-date-picker>
       </v-menu>
       <v-text-field
         solo
         :clearable="!isError && !isLoading"
         :readonly="isError || isLoading"
-        :value="query"
+        v-model="query"
         placeholder="Pretrazi vesti"
-        @input="value => onChange(value, 'query')"
+        @input="(value) => onChange(value, 'query')"
       ></v-text-field>
     </v-card>
   </div>
@@ -41,16 +41,29 @@ import { mapState } from "vuex";
 import debounce from "lodash.debounce";
 export default {
   name: "NewsSearch",
-  data: () => ({
-    menu: false,
+  data(){
+    return{
+
+      menu: false,
     query: "",
-    currentDate: ""
-  }),
+    currentDate: "",
+    newsData:[]
+    }
+    },
   computed: {
     searchByDate() {
       return this.$route.path === "/search-by-date";
     },
-    ...mapState(["isError", "isLoading"])
+    ...mapState(["isError", "isLoading"]),
+
+      
+    filterQuestions() {
+      return this.newsData.filter((q) => {
+      
+        return q.query.title.toLowerCase().match(this.search.toLowerCase());
+      });
+    },
+  
   },
   methods: {
     onChange: debounce(function(value, type) {
@@ -62,8 +75,21 @@ export default {
         page: 1,
         date: this.currentDate
       });
-    }, 250)
-  }
+    }, 650),
+
+      getNews() {
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      this.newsData = this.$store.getters.fetchNews;
+      console.log(this.newsData);
+      return this.newsData;
+    },
+  },
+  mounted(){
+    this.getNews()
+  },
+
+
+  
 };
 </script>
 

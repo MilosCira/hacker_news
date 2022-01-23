@@ -3,7 +3,7 @@
     <v-container>
       <NewsSearch />
       <v-alert v-if="isError" class="my-5 mx-auto" width="500px" type="error">
-        Something went wrong, please try again!
+        Greska!
       </v-alert>
       <v-progress-circular
         v-else-if="isLoading"
@@ -23,12 +23,12 @@ export default {
   name: "search-by-date",
   components: {
     NewsList: () => 
-      import(/* webpackPrefetch: true */ "@/components/NewsList.vue"),
+      import( "@/components/NewsList.vue"),
     NewsSearch: () =>
-      import(/* webpackPrefetch: true */ "@/components/NewsSearch.vue")
+      import( "@/components/NewsSearch.vue")
   },
   computed: mapState(["news", "lastPage", "isError", "isLoading"]),
-  beforeRouteEnter(to, from, next) {
+  beforeRouteEnter( next) {
     next(async vm => {
       vm.$store.dispatch("FETCH_NEWS_LIST", {});
     });

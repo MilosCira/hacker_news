@@ -31,7 +31,7 @@
                 <span v-if="item.points">{{ item.points }} points </span>
                 <span v-if="item.author">by {{ item.author }} </span>
                 <span v-if="item.created_at">
-                  created at {{ item.created_at | formatDate }}
+                  created at {{ item.created_at }}
                 </span>
               </v-list-item-subtitle>
             </v-list-item-content>

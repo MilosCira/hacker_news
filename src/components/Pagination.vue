@@ -2,7 +2,7 @@
   <div class="pagination">
     <v-btn
       fab
-      color="blue darken-1"
+      color="indigo darken-1"
       class="mx-1"
       :disabled="currentPage === 1"
       @click="onPaginate(1)"
@@ -12,7 +12,7 @@
     </v-btn>
     <v-btn
       fab
-      color="blue darken-1"
+      color="indigo darken-1"
       class="mx-1"
       :disabled="currentPage === 1"
       @click="onPaginate(currentPage - 1)"
@@ -22,7 +22,7 @@
     <span v-if="currentPage - 1 > range">...</span>
     <v-btn
       fab
-      color="blue lighten-1"
+      color="indigo lighten-1"
       class="mx-1"
       v-for="n in pages"
       :key="n"
@@ -34,7 +34,7 @@
     <span v-if="lastPage - currentPage > range">...</span>
     <v-btn
       fab
-      color="blue darken-1"
+      color="indigo darken-1"
       class="mx-1"
       :disabled="currentPage === lastPage"
       @click="onPaginate(currentPage + 1)"
@@ -43,7 +43,7 @@
     </v-btn>
     <v-btn
       fab
-      color="blue darken-1"
+      color="indigo darken-1"
       class="mx-1"
       :disabled="currentPage === lastPage"
       @click="onPaginate(lastPage)"
@@ -99,5 +99,10 @@ export default {
 }
 button {
   font-size: 20px;
+}
+@media only screen and (max-width: 480px) {
+  .v-btn{
+    margin: 10px;
+  }
 }
 </style>

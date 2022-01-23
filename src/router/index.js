@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
 import store from "../store";
+
 Vue.use(Router)
 
 const routes = [
@@ -25,7 +26,20 @@ const routes = [
       import(
        "../views/SearchByDate.vue"
       )
-  }
+  },
+  {
+    path: "/user-crud",
+    name: "User",
+    component: () =>
+      import(
+       "../views/Users.vue"
+      )
+  },
+  {
+    path: '*',
+    name: '404',
+    component:Home
+  },
 
 ]
 

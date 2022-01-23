@@ -12,25 +12,43 @@
           v-model="group"
           active-class="deep-purple--text text--accent-4"
         >
+         <router-link to="/"> 
           <v-list-item>
             <v-list-item-icon>
               <v-icon color="white">mdi-home</v-icon>
             </v-list-item-icon>
-          <router-link to="/">  <v-list-item-title class="white--text">Home</v-list-item-title></router-link>
+          <v-list-item-title class="white--text">Pocetna</v-list-item-title>
           </v-list-item>
-              
+          </router-link>
+
+
+               <router-link to="/News">
               <v-list-item>
             <v-list-item-icon>
               <v-icon color="white">mdi-newspaper</v-icon>
             </v-list-item-icon>
-            <router-link to="/News">  <v-list-item-title class="white--text">Vesti</v-list-item-title></router-link>
+             <v-list-item-title class="white--text">Vesti</v-list-item-title>
           </v-list-item>
+          </router-link>
+
+          <router-link to="/search-by-date">
           <v-list-item>
-            <v-list-item-icon>
+             <v-list-item-icon>
               <v-icon color="white">mdi-magnify</v-icon>
             </v-list-item-icon>
-            <router-link to="/search-by-date">  <v-list-item-title class="white--text">Filtriraj vesti po datumu</v-list-item-title></router-link>
+             <v-list-item-title class="white--text">Filtriraj vesti po datumu</v-list-item-title>
           </v-list-item>
+          </router-link>
+
+           <router-link to="/user-crud">
+           <v-list-item>
+            <v-list-item-icon>
+              <v-icon color="white">mdi-account</v-icon>
+            </v-list-item-icon>
+             <v-list-item-title class="white--text">Users</v-list-item-title>
+          </v-list-item>
+          </router-link>
+        
 
           
         </v-list-item-group>
