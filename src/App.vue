@@ -15,24 +15,5 @@ export default {
     Footer,
     NavBar
   },
-  data() {
-    return {
-      news:[]
-    };
-  },
-  methods:{
-     getNews() {
-      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.news = this.$store.getters.fetchJobs;
-      console.log(this.news);
-      return this.news;
-    },
-  },
-  mounted(){
-   
-    this.getNews();
-  }
-  
-  
 };
 </script>

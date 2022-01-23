@@ -60,7 +60,7 @@ export default {
     filterQuestions() {
       return this.newsData.filter((q) => {
       
-        return q.query.title.toLowerCase().match(this.search.toLowerCase());
+        return q.newsData.title.toLowerCase().match(this.search.toLowerCase());
       });
     },
   
@@ -80,7 +80,6 @@ export default {
       getNews() {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       this.newsData = this.$store.getters.fetchNews;
-      console.log(this.newsData);
       return this.newsData;
     },
   },

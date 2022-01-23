@@ -28,7 +28,7 @@ export default {
       import( "@/components/NewsSearch.vue")
   },
   computed: mapState(["news", "lastPage", "isError", "isLoading"]),
-  beforeRouteEnter( next) {
+  beforeRouteEnter(to,from, next) {
     next(async vm => {
       vm.$store.dispatch("FETCH_NEWS_LIST", {});
     });
